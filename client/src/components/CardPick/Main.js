@@ -1,8 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import CardsToPick from "./CardsToPick";
-import SideBar from "./Sidebar";
-import * as actions from "../../actions/action";
+import React, { Component } from 'react';
+import CardsToPick from './CardsToPick';
+import SideBar from './Sidebar';
 
 class Dashboard extends Component {
   render() {
@@ -19,7 +17,4 @@ class Dashboard extends Component {
   }
 }
 
-export default connect(
-  null,
-  actions
-)(Dashboard);
+export default Dashboard;

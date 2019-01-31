@@ -1,18 +1,17 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import DisplayCards from "./DisplayCards";
-import DeckListSidebar from "./DeckListSidebar";
-import * as actions from "../../actions/action";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import DisplayCards from './DisplayCards';
+import DeckListSidebar from './DeckListSidebar';
+import * as actions from '../../actions/action';
 
-// parent component
 class Main extends Component {
-  state = { deckName: "", cards: [] };
+  state = { deckName: '', cards: [] };
   async componentDidMount() {
     await this.props.fetchUser();
     await this.props.fetchDeckList();
     let index = this.props.deckListFromServer.length;
     if (index === 0) {
-      this.setState({ cards: [], deckName: "" });
+      this.setState({ cards: [], deckName: '' });
     } else {
       let item = this.props.deckListFromServer[index - 1]; // every time page is refreshed, the top deck of the list will be shown
       this.setState({ cards: item.cards, deckName: item.deckName });
@@ -24,13 +23,11 @@ class Main extends Component {
     this.setState({ cards: item.cards, deckName: item.deckName });
   };
   removeDeck = async id => {
-    console.log("here");
     await this.props.removeDeck(id);
     let index = this.props.deckListFromServer.length;
-    console.log(index);
 
     if (index === 0) {
-      this.setState({ cards: [], deckName: "" });
+      this.setState({ cards: [], deckName: '' });
     } else {
       let item = this.props.deckListFromServer[index - 1];
       this.setState({ cards: item.cards, deckName: item.deckName });

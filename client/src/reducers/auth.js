@@ -1,5 +1,7 @@
-import { FETCH_USER, ERROR_MESSAGE } from "../actions/action";
+import { FETCH_USER, ERROR_MESSAGE } from '../actions/action';
+
 const initialState = { user: null, message: null };
+
 const auth = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_USER:

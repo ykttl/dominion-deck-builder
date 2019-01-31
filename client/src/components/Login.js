@@ -1,19 +1,18 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { connect } from "react-redux";
-import * as actions from "../actions/action";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import * as actions from '../actions/action';
 
 class Login extends Component {
-  state = { username: "", password: "" };
+  state = { username: '', password: '' };
   localLogin = () => {
     const username = this.state.username;
     const password = this.state.password;
     axios
-      .post("/auth/local-login", { username: username, password: password })
+      .post('/auth/local-login', { username: username, password: password })
       .then(res => {
-        console.log(res.data);
-        if (res.data === "success") {
-          window.location.href = "/";
+        if (res.data === 'success') {
+          window.location.href = '/';
         } else {
           this.props.fetchUser(res.data.message);
         }
@@ -34,7 +33,7 @@ class Login extends Component {
       <div className="auth-box">
         <h5 className="auth-title">Log in</h5>
         {this.props.auth.user && (
-          <p style={{ color: "red" }}>
+          <p style={{ color: 'red' }}>
             You already have an account and logged in :D
           </p>
         )}
@@ -47,7 +46,7 @@ class Login extends Component {
         <h6>OR</h6>
 
         <h6>Username and password</h6>
-        <div style={{ color: "red" }}>{this.props.auth.message}</div>
+        <div style={{ color: 'red' }}>{this.props.auth.message}</div>
         <div className="input-box">
           <input type="text" placeholder="Username" onChange={this.username} />
 

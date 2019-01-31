@@ -1,10 +1,9 @@
-import { SELECT_CARD, NAME_DECK, REMOVE_CARD } from "../actions/action";
+import { SELECT_CARD, NAME_DECK, REMOVE_CARD } from '../actions/action';
 
-// Reducer
 const initialState = {
   deck: [],
-  deckName: "",
-  errorMessage: ""
+  deckName: '',
+  errorMessage: ''
 };
 
 const deck = (state = initialState, action) => {
@@ -27,7 +26,7 @@ const deck = (state = initialState, action) => {
       return {
         ...state,
         deck: [...state.deck, action.card],
-        errorMessage: ""
+        errorMessage: ''
       };
     case NAME_DECK:
       return {
@@ -38,7 +37,7 @@ const deck = (state = initialState, action) => {
       return {
         ...state,
         deck: state.deck.filter(x => x !== action.card),
-        errorMessage: ""
+        errorMessage: ''
       };
     default:
       return state;

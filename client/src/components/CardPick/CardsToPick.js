@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import Select from "react-select";
-import cardsData from "../../cardsData";
-import { connect } from "react-redux";
-import * as actions from "../../actions/action";
+import React, { Component } from 'react';
+import Select from 'react-select';
+import cardsData from '../../cardsData';
+import { connect } from 'react-redux';
+import * as actions from '../../actions/action';
 
 class CardPick extends Component {
-  state = { expansion: null, cost: null, type: null, cardName: "" };
+  state = { expansion: null, cost: null, type: null, cardName: '' };
   pickCard = cardName => {
     this.props.selectCard(cardName);
   };
@@ -50,7 +50,7 @@ class CardPick extends Component {
         <a href="#/">
           <img
             key={item}
-            onClick={() => this.pickCard(item.name)} // item まるごと渡せばいいのでは
+            onClick={() => this.pickCard(item.name)}
             src={`img/${item.name}.jpg`}
             className="card-img"
           />
@@ -60,13 +60,13 @@ class CardPick extends Component {
   }
   render() {
     const options1 = [
-      { value: null, label: "All" },
-      { value: "base", label: "Base Set" },
-      { value: "seaside", label: "Seaside" },
-      { value: "prosperity", label: "Prosperity" }
+      { value: null, label: 'All' },
+      { value: 'base', label: 'Base Set' },
+      { value: 'seaside', label: 'Seaside' },
+      { value: 'prosperity', label: 'Prosperity' }
     ];
     const options2 = [
-      { value: null, label: "All" },
+      { value: null, label: 'All' },
       { value: 1, label: 1 },
       { value: 2, label: 2 },
       { value: 3, label: 3 },
@@ -77,19 +77,21 @@ class CardPick extends Component {
       { value: 8, label: 8 }
     ];
     const options3 = [
-      { value: null, label: "All" },
-      { value: "action", label: "Action" },
-      { value: "attack", label: "Attack" },
-      { value: "reaction", label: "Reaction" },
-      { value: "duration", label: "Duration" },
-      { value: "victory", label: "Victory" },
-      { value: "treasure", label: "Treasure" }
+      { value: null, label: 'All' },
+      { value: 'action', label: 'Action' },
+      { value: 'attack', label: 'Attack' },
+      { value: 'reaction', label: 'Reaction' },
+      { value: 'duration', label: 'Duration' },
+      { value: 'victory', label: 'Victory' },
+      { value: 'treasure', label: 'Treasure' }
     ];
     const styles = {
       control: styles => ({
         ...styles,
-        width: "150px",
-        height: "30px"
+        width: '150px',
+        height: '30px',
+        border: 'solid gray',
+        'font-size': '1.2rem'
       })
     };
 

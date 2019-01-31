@@ -1,4 +1,4 @@
-import { SAVE_DECK, FETCH_DECKLIST, REMOVE_DECK } from "../actions/action";
+import { SAVE_DECK, FETCH_DECKLIST, REMOVE_DECK } from '../actions/action';
 
 const initialState = {
   deckListFromServer: []

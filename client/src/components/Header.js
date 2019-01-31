@@ -1,21 +1,18 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import * as actions from "../actions/action";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import * as actions from '../actions/action';
 
 class Header extends Component {
   componentDidMount = () => {
     this.props.fetchUser();
   };
-  componentDidUpdate() {
-    console.log(this.props.auth);
-  }
 
   renderContent() {
     switch (this.props.user) {
-      case null: // still deciding
+      case null:
         return;
-      case false: // logged out
+      case false:
         return (
           <li>
             <a href="/login" onClick={this.props.fetchUser()}>
@@ -24,7 +21,6 @@ class Header extends Component {
           </li>
         );
       default:
-        // logged in
         return (
           <li>
             <a href="/api/logout">Logout</a>
@@ -35,7 +31,7 @@ class Header extends Component {
   render() {
     return (
       <nav id="jump">
-        <div className="nav-wrapper  blue-grey darken-4">
+        <div className="nav-wrapper blue-grey darken-4">
           <ul>
             <li>
               <Link to="/">Card Pick</Link>
@@ -50,7 +46,7 @@ class Header extends Component {
           <a
             href="/"
             class="center brand-logo "
-            style={{ color: "cyan", fontFamily: "Cinzel" }}
+            style={{ color: 'cyan', fontFamily: 'Cinzel' }}
           >
             Dominion Deck Builder
           </a>

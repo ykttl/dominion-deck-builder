@@ -1,12 +1,12 @@
 // passport
-const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const LocalStrategy = require("passport-local").Strategy;
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 // auth variables
-const keys = require("../config/index");
+const keys = require('../config/index');
 // mongoose
-const mongoose = require("mongoose");
-const User = require("../models/User");
+const mongoose = require('mongoose');
+const User = require('../models/User');
 
 // connect mongoose to MongoDB
 mongoose.connect(
@@ -21,7 +21,7 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: "/auth/google/callback",
+      callbackURL: '/auth/google/callback',
       proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
@@ -43,12 +43,12 @@ passport.use(
 //Local------------------------
 // Local-SignUp
 passport.use(
-  "local-signup",
+  'local-signup',
   new LocalStrategy(
     {
       passReqToCallback: true,
-      usernameField: "username",
-      passwordField: "password"
+      usernameField: 'username',
+      passwordField: 'password'
     },
     function(req, username, password, done) {
       User.findOne({ username: username }, async (err, user) => {
@@ -57,7 +57,7 @@ passport.use(
         }
         if (user) {
           return done(null, false, {
-            message: "This username is already taken. Try different one."
+            message: 'This username is already taken. Try different one.'
           });
         } else {
           const user = await new User({
@@ -73,12 +73,12 @@ passport.use(
 
 //Local-login
 passport.use(
-  "local-login",
+  'local-login',
   new LocalStrategy(
     {
       passReqToCallback: true,
-      usernameField: "username",
-      passwordField: "password"
+      usernameField: 'username',
+      passwordField: 'password'
     },
     function(req, username, password, done) {
       User.findOne({ username: username, password: password }, function(
@@ -92,7 +92,7 @@ passport.use(
           return done(null, user);
         } else {
           return done(null, false, {
-            message: "Your username or password are not correct."
+            message: 'Your username or password are not correct.'
           });
         }
       });

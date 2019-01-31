@@ -1,14 +1,14 @@
-const passport = require("passport");
+const passport = require('passport');
 
 module.exports = app => {
   // General Route ===========================
   // Log out
-  app.get("/api/logout", (req, res) => {
+  app.get('/api/logout', (req, res) => {
     req.logout();
-    res.redirect("/");
+    res.redirect('/');
   });
   // Fetch Current User Data
-  app.get("/api/current_user", (req, res) => {
+  app.get('/api/current_user', (req, res) => {
     res.send(req.user);
   });
 
@@ -16,38 +16,38 @@ module.exports = app => {
   // Google------------
   // send auth request to google
   app.get(
-    "/auth/google",
-    passport.authenticate("google", { scope: ["profile", "email"] })
+    '/auth/google',
+    passport.authenticate('google', { scope: ['profile', 'email'] })
   );
   // the callback from google
   app.get(
-    "/auth/google/callback",
-    passport.authenticate("google"),
+    '/auth/google/callback',
+    passport.authenticate('google'),
     (req, res) => {
-      res.redirect("/");
+      res.redirect('/');
     }
   );
 
   // Local (with username and password)------------
   // local-signup
-  app.post("/auth/local-signup", (req, res, next) => {
-    passport.authenticate("local-signup", (error, user, message) => {
+  app.post('/auth/local-signup', (req, res, next) => {
+    passport.authenticate('local-signup', (error, user, message) => {
       if (error) return next(error);
       if (message) return res.send(message);
       req.logIn(user, error => {
         if (error) return next(error);
-        return res.send("success");
+        return res.send('success');
       });
     })(req, res, next);
   });
   // local-login
-  app.post("/auth/local-login", (req, res, next) => {
-    passport.authenticate("local-login", (error, user, message) => {
+  app.post('/auth/local-login', (req, res, next) => {
+    passport.authenticate('local-login', (error, user, message) => {
       if (error) return next(error);
       if (message) return res.send(message);
       req.logIn(user, error => {
         if (error) return next(error);
-        return res.send("success");
+        return res.send('success');
       });
     })(req, res, next);
   });

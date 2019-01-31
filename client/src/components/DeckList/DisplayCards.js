@@ -1,23 +1,21 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import * as actions from "../../actions/action";
-import cardsData from "../../cardsData";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../actions/action';
+import cardsData from '../../cardsData';
 
 class DisplayCards extends Component {
   message() {
     switch (this.props.user) {
-      case null: // still deciding
+      case null:
         return;
-      case false: // logged out
+      case false:
         return <p>You can save your decks by sign up :D</p>;
-      // return <Login />;
       default:
-        // logged in
         return <div />;
     }
   }
   renderDeckName() {
-    if (this.props.deckName === "") {
+    if (this.props.deckName === '') {
       return <p> No Title</p>;
     } else {
       return <p> {this.props.deckName}</p>;

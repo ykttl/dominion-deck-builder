@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const DeckList = require("./DeckList");
+const DeckList = require('./DeckList');
 
 const userSchema = new Schema({
   googleId: String,
@@ -9,4 +9,4 @@ const userSchema = new Schema({
   deckList: [DeckList]
 });
 
-module.exports = mongoose.model("users", userSchema);
+module.exports = mongoose.model('users', userSchema);

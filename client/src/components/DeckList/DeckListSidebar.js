@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import * as actions from "../../actions/action";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../actions/action';
 
 class DeckListSidebar extends Component {
   selectDeck = index => {
@@ -8,7 +8,6 @@ class DeckListSidebar extends Component {
   };
   removeDeck = id => {
     this.props.removeDeckParent(id);
-    console.log(this.props.removeDeck);
   };
 
   render() {
@@ -27,7 +26,7 @@ class DeckListSidebar extends Component {
                   >
                     <div>
                       <div key={index} className="list-item-name">
-                        {item.deckName === "" ? "No title" : item.deckName}
+                        {item.deckName === '' ? 'No title' : item.deckName}
                       </div>
                     </div>
                   </a>
@@ -35,7 +34,6 @@ class DeckListSidebar extends Component {
                     onClick={() => this.removeDeck(item._id)}
                     className="x-button"
                   >
-                    {" "}
                     <i class="far fa-times-circle" />
                   </button>
                 </div>
