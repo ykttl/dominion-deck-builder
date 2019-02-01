@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Cards from './Cards';
 import Sidebar from './Sidebar';
-import * as actions from '../../actions/action';
+import * as actions from '../../actions/request';
 
 class Main extends Component {
   state = {

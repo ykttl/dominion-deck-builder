@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as actions from '../actions/action';
+import * as actions from '../actions/request';
 
 class Header extends Component {
   componentDidMount = () => {

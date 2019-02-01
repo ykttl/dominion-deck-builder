@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 
 class Selectors extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const expansion = [
       { value: null, label: 'All' },

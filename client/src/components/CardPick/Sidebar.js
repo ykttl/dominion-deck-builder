@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import * as requests from '../../actions/request';
 import * as actions from '../../actions/action';
 import cardsData from '../../cardsData';
 
@@ -12,17 +14,18 @@ class Sidebar extends Component {
       alert('Select cards to save :) ');
     } else {
       const deckToSave = this.props;
-      this.props.saveDeck(deckToSave);
+      this.props.requests.saveDeck(deckToSave);
       window.location.href = '/decklist';
       //this.props.history.push('/decklist');
     }
   };
   nameDeck = e => {
+    console.log(this.props.requests);
     const name = e.target.value;
-    this.props.nameDeck(name);
+    this.props.actions.nameDeck(name);
   };
   removeCard = card => {
-    this.props.removeCard(card);
+    this.props.actions.removeCard(card);
   };
   renderCardName = () => {
     let deck = this.props.deck;
@@ -85,7 +88,14 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    requests: bindActionCreators(requests, dispatch),
+    actions: bindActionCreators(actions, dispatch)
+  };
+};
+
 export default connect(
   mapStateToProps,
-  actions
+  mapDispatchToProps
 )(Sidebar);

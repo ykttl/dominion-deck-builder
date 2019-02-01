@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../actions/action';
+import * as actions from '../../actions/request';
 import cardsData from '../../cardsData';
 
 class DisplayCards extends Component {

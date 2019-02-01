@@ -1,4 +1,4 @@
-import { FETCH_USER, ERROR_MESSAGE } from '../actions/action';
+import { FETCH_USER, ERROR_MESSAGE } from '../actions/request';
 
 const initialState = { user: null, message: null };
 

@@ -1,4 +1,4 @@
-import { SELECT_CARD, NAME_DECK, REMOVE_CARD } from '../actions/action';
+import { SELECT_CARD, REMOVE_CARD, NAME_DECK } from '../actions/action';
 
 const initialState = {
   deck: [],
