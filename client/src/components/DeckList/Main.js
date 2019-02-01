@@ -1,48 +1,49 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import DisplayCards from './DisplayCards';
-import DeckListSidebar from './DeckListSidebar';
+import Cards from './Cards';
+import Sidebar from './Sidebar';
 import * as actions from '../../actions/action';
 
 class Main extends Component {
-  state = { deckName: '', cards: [] };
+  state = {
+    deckName: '',
+    cards: []
+  };
   async componentDidMount() {
     await this.props.fetchUser();
     await this.props.fetchDeckList();
-    let index = this.props.deckListFromServer.length;
-    if (index === 0) {
-      this.setState({ cards: [], deckName: '' });
-    } else {
-      let item = this.props.deckListFromServer[index - 1]; // every time page is refreshed, the top deck of the list will be shown
-      this.setState({ cards: item.cards, deckName: item.deckName });
-    }
+    this.renderDeckList();
   }
-
   selectDeck = index => {
-    const item = this.props.deckListFromServer[index];
-    this.setState({ cards: item.cards, deckName: item.deckName });
+    const selectedDeck = this.props.deckListFromServer[index];
+    this.setState({
+      cards: selectedDeck.cards,
+      deckName: selectedDeck.deckName
+    });
   };
   removeDeck = async id => {
     await this.props.removeDeck(id);
-    let index = this.props.deckListFromServer.length;
-
-    if (index === 0) {
+    this.renderDeckList();
+  };
+  renderDeckList = () => {
+    const deckListLength = this.props.deckListFromServer.length;
+    if (deckListLength === 0) {
       this.setState({ cards: [], deckName: '' });
     } else {
-      let item = this.props.deckListFromServer[index - 1];
-      this.setState({ cards: item.cards, deckName: item.deckName });
+      // always show the latest deck in the list
+      const latestDeck = this.props.deckListFromServer[deckListLength - 1];
+      this.setState({ cards: latestDeck.cards, deckName: latestDeck.deckName });
     }
   };
-
   render() {
     return (
       <div className="row">
-        <DisplayCards deckName={this.state.deckName} cards={this.state.cards} />
-        <DeckListSidebar
+        <Cards deckName={this.state.deckName} cards={this.state.cards} />
+        <Sidebar
           deckName={this.state.deckName}
           cards={this.state.cards}
-          selectDeckParent={this.selectDeck}
-          removeDeckParent={this.removeDeck}
+          selectDeck={this.selectDeck}
+          removeDeck={this.removeDeck}
         />
       </div>
     );

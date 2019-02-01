@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../actions/action';
 
 class DeckListSidebar extends Component {
-  selectDeck = index => {
-    this.props.selectDeckParent(index);
-  };
-  removeDeck = id => {
-    this.props.removeDeckParent(id);
-  };
-
   render() {
     return (
       <div className="col s3">
@@ -21,7 +13,7 @@ class DeckListSidebar extends Component {
                 <div className="list-item list-item-decklist">
                   <a
                     href="#jump"
-                    onClick={() => this.selectDeck(index)}
+                    onClick={() => this.props.selectDeck(index)} // props from Main.js
                     className="ancher-select-deck"
                   >
                     <div>
@@ -31,7 +23,7 @@ class DeckListSidebar extends Component {
                     </div>
                   </a>
                   <button
-                    onClick={() => this.removeDeck(item._id)}
+                    onClick={() => this.props.removeDeck(item._id)} // props from Main.js
                     className="x-button"
                   >
                     <i class="far fa-times-circle" />
@@ -55,5 +47,5 @@ const mapStateToProps = ({ deckList, auth }) => {
 
 export default connect(
   mapStateToProps,
-  actions
+  null
 )(DeckListSidebar);

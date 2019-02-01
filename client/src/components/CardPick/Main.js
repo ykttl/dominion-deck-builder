@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import CardsToPick from './CardsToPick';
-import SideBar from './Sidebar';
+import Cards from './Cards';
+import Sidebar from './Sidebar';
 
-class Dashboard extends Component {
+class CardPick extends Component {
   render() {
     return (
       <div className="row">
         <div className="col s9">
-          <CardsToPick />
+          <Cards />
         </div>
         <div className="col s3 sidebar">
-          <SideBar />
+          <Sidebar />
         </div>
       </div>
     );
   }
 }
 
-export default Dashboard;
+export default CardPick;

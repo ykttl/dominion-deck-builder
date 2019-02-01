@@ -6,12 +6,15 @@ import cardsData from '../../cardsData';
 class Sidebar extends Component {
   saveDeck = () => {
     if (!this.props.user) {
-      alert('You can save your decks by sing-up :)');
-      this.props.history.push('/');
+      alert('You can save your deck by sing-up :)');
+    }
+    if (this.props.deck.length === 0) {
+      alert('Select cards to save :) ');
     } else {
       const deckToSave = this.props;
       this.props.saveDeck(deckToSave);
       window.location.href = '/decklist';
+      //this.props.history.push('/decklist');
     }
   };
   nameDeck = e => {
@@ -21,28 +24,29 @@ class Sidebar extends Component {
   removeCard = card => {
     this.props.removeCard(card);
   };
-  renderCardName() {
-    let cardsToRender = cardsData;
+  renderCardName = () => {
     let deck = this.props.deck;
-    let orderedDeck = deck.map(
-      card => (card = cardsToRender.filter(item => item.name === card))
+    // this deck has only cards name,
+    // to sort them in order to the cost,
+    // replace the strings to data objects from cardsData.js
+    deck = deck.map(
+      card => (card = cardsData.filter(data => data.name === card))
     );
-
     function compare(a, b) {
       if (a[0].cost < b[0].cost) return -1;
       if (a[0].cost > b[0].cost) return 1;
       return 0;
     }
+    deck.sort(compare);
 
-    orderedDeck.sort(compare);
-
-    return orderedDeck.map(item => {
+    // ----- render sorted cards -----
+    return deck.map(card => {
       return (
         <div className="list-item">
-          <div className="list-item-cost">{item[0].cost}</div>
-          <div className="list-item-name">{item[0].name}</div>
+          <div className="list-item-cost">{card[0].cost}</div>
+          <div className="list-item-name">{card[0].name}</div>
           <button
-            onClick={() => this.removeCard(item[0].name)}
+            onClick={() => this.removeCard(card[0].name)}
             className="x-button"
           >
             <i class="far fa-times-circle" />
@@ -50,7 +54,7 @@ class Sidebar extends Component {
         </div>
       );
     });
-  }
+  };
   render() {
     return (
       <div>
@@ -62,7 +66,6 @@ class Sidebar extends Component {
           </a>
         </div>
         <p className="duplicate-error-msg">{this.props.errorMessage}</p>
-
         {this.renderCardName()}
         <div style={{ textAlign: 'right' }}>
           <span className="bold-900">{this.props.deck.length}/10</span> cards
