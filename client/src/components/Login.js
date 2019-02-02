@@ -30,30 +30,26 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="auth-box">
-        <h5 className="auth-title">Log in</h5>
+      <div className="auth-container">
+        <p className="bold large heading font-cyan">Log in</p>
         {this.props.auth.user && (
-          <p style={{ color: 'red' }}>
+          <p className="font-red">
             You already have an account and logged in :D
           </p>
         )}
-
-        <h6>with Google</h6>
+        <p className="small">with Google</p>
         <a href="/auth/google">
           <img src="img/google/google-btn.png" className="google-img" />
         </a>
-
-        <h6>OR</h6>
-
-        <h6>Username and password</h6>
-        <div style={{ color: 'red' }}>{this.props.auth.message}</div>
+        <p className="small">OR</p>
+        <p className="small">Username and password</p>
+        <div className="font-red">{this.props.auth.errorMessage}</div>
         <div className="input-box">
           <input type="text" placeholder="Username" onChange={this.username} />
-
           <input type="text" placeholder="Password" onChange={this.password} />
           <button
             onClick={this.localLogin}
-            className="waves-effect waves-light btn"
+            className="waves-effect waves-light btn auth-btn"
           >
             Log in
           </button>

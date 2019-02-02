@@ -13,10 +13,12 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header />
-            <Route key={1} exact path="/" component={CardPick} />
-            <Route key={2} exact path="/decklist" component={DeckList} />
-            <Route key={3} exact path="/signup" component={SignUp} />
-            <Route key={4} exact path="/login" component={Login} />
+            <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+              <Route key={1} exact path="/" component={CardPick} />
+              <Route key={2} exact path="/decklist" component={DeckList} />
+              <Route key={3} exact path="/signup" component={SignUp} />
+              <Route key={4} exact path="/login" component={Login} />
+            </div>
           </div>
         </BrowserRouter>
       </div>

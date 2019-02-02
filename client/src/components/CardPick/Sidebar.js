@@ -9,15 +9,16 @@ class Sidebar extends Component {
   saveDeck = () => {
     if (!this.props.user) {
       alert('You can save your deck by sing-up :)');
+      return;
     }
     if (this.props.deck.length === 0) {
       alert('Select cards to save :) ');
-    } else {
-      const deckToSave = this.props;
-      this.props.requests.saveDeck(deckToSave);
-      window.location.href = '/decklist';
-      //this.props.history.push('/decklist');
+      return;
     }
+    const deckToSave = this.props;
+    this.props.requests.saveDeck(deckToSave);
+    window.location.href = '/decklist';
+    //this.props.history.push('/decklist');
   };
   nameDeck = e => {
     console.log(this.props.requests);
@@ -29,8 +30,7 @@ class Sidebar extends Component {
   };
   renderCardName = () => {
     let deck = this.props.deck;
-    // this deck has only cards name,
-    // to sort them in order to the cost,
+    // this deck has only card names. to sort them in order to the cost,
     // replace the strings to data objects from cardsData.js
     deck = deck.map(
       card => (card = cardsData.filter(data => data.name === card))
@@ -45,33 +45,33 @@ class Sidebar extends Component {
     // ----- render sorted cards -----
     return deck.map(card => {
       return (
-        <div className="list-item">
-          <div className="list-item-cost">{card[0].cost}</div>
-          <div className="list-item-name">{card[0].name}</div>
+        <ul className="list-item">
+          <li className="list-item-cost">{card[0].cost}</li>
+          <li className="list-item-name">{card[0].name}</li>
           <button
             onClick={() => this.removeCard(card[0].name)}
             className="x-button"
           >
             <i class="far fa-times-circle" />
           </button>
-        </div>
+        </ul>
       );
     });
   };
   render() {
     return (
       <div>
-        <h5 className="bold-700">DECK</h5>
-        <div className="input-area">
+        <p className="heading medium bold">DECK</p>
+        <div className="flex">
           <input type="text" placeholder="deck name" onChange={this.nameDeck} />
           <a className="btn cyan" onClick={this.saveDeck}>
             save
           </a>
         </div>
-        <p className="duplicate-error-msg">{this.props.errorMessage}</p>
+        <p className="font-red small bold">{this.props.errorMessage}</p>
         {this.renderCardName()}
         <div style={{ textAlign: 'right' }}>
-          <span className="bold-900">{this.props.deck.length}/10</span> cards
+          <span className="bold">{this.props.deck.length}/10</span> cards
           selected
         </div>
       </div>

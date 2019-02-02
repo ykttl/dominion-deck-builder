@@ -7,20 +7,18 @@ class DeckListSidebar extends Component {
       <div className="col s3">
         {this.props.user && (
           <div>
-            <h5 className="bold-700">Deck List</h5>
+            <p className="heading medium bold">Deck List</p>
             {this.props.deckListFromServer
               .map((item, index) => (
-                <div className="list-item list-item-decklist">
+                <ul className="list-item decklist-hover">
                   <a
                     href="#jump"
                     onClick={() => this.props.selectDeck(index)} // props from Main.js
-                    className="ancher-select-deck"
+                    className="font-black"
                   >
-                    <div>
-                      <div key={index} className="list-item-name">
-                        {item.deckName === '' ? 'No title' : item.deckName}
-                      </div>
-                    </div>
+                    <li key={index} className="list-item-name">
+                      {item.deckName === '' ? 'No title' : item.deckName}
+                    </li>
                   </a>
                   <button
                     onClick={() => this.props.removeDeck(item._id)} // props from Main.js
@@ -28,7 +26,7 @@ class DeckListSidebar extends Component {
                   >
                     <i class="far fa-times-circle" />
                   </button>
-                </div>
+                </ul>
               ))
               .reverse()}
           </div>

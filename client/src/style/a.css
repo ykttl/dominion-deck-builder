@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Cinzel:400,700');
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-@import './base.css';
+@import url('https://fonts.googleapis.com/css?family=Cinzel:400,700,900');
+@import url('https://fonts.googleapis.com/css?family=Lora');
 
 body {
   background: white;
@@ -8,40 +7,54 @@ body {
   font-weight: 400;
   font-size: 1.3rem;
 }
+
 p {
   margin: 5px;
 }
-.heading {
-  margin-top: 10px;
+
+.sidebar {
+  right: 0;
+  top: 0;
+  position: sticky;
 }
+
 .selectors {
   display: flex;
   margin: 10px;
 }
+
 .card-img {
   width: 20%;
 }
 .card-img:hover {
   border: yellow 4px solid;
 }
-.flex {
+
+.input-area {
   display: flex;
 }
-.sticky {
-  right: 0;
-  top: 0;
-  position: sticky;
+
+.duplicate-error-msg {
+  color: red;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
-/*===== Common setting ===== */
-/* ----- cardpick and decklist ----- */
+.bold-700 {
+  font-weight: 700;
+}
+.bold-900 {
+  font-weight: 700;
+}
+
 .list-item {
   display: flex;
   margin: 5px;
   background: cyan;
+  font-weight: 400;
 }
-.decklist-hover:hover {
-  font-weight: 700;
+.list-item-decklist:hover {
+  font-weight: 900;
 }
 .list-item-cost {
   padding: 0px 3px 0px 3px;
@@ -52,12 +65,14 @@ p {
 .list-item-name {
   margin: 3px;
 }
+
 .x-button {
   margin: 0 0 0 auto;
   border: none;
   cursor: pointer;
   background: cyan;
 }
+
 .x-button:active {
   background: cyan;
 }
@@ -65,20 +80,31 @@ p {
   background: cyan;
 }
 
-/* ----- sign up and login ----- */
-.auth-container {
+.recomending-signup-msg {
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+.ancher-select-deck {
+  color: black;
+}
+
+.auth-box {
   margin: 0 auto;
-  padding-top: 20px;
   text-align: center;
   width: 50%;
+
+  /* font-family: "Lora", serif; */
 }
-.google-img {
-  width: 50%;
-}
+
 .input-box {
   width: 50%;
   margin: 0 auto;
 }
-.auth-btn {
-  margin-top: 10px;
+.google-img {
+  width: 50%;
+}
+
+.auth-title {
+  font-weight: 700;
 }

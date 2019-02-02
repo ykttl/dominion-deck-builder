@@ -9,7 +9,7 @@ class CardPick extends Component {
         <div className="col s9">
           <Cards />
         </div>
-        <div className="col s3 sidebar">
+        <div className="col s3 sticky">
           <Sidebar />
         </div>
       </div>

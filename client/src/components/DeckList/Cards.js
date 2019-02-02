@@ -9,7 +9,15 @@ class DisplayCards extends Component {
       case null:
         return;
       case false:
-        return <p>You can save your decks by sign up :D</p>;
+        return (
+          <div style={{ 'text-align': 'center', 'margin-top': '40px' }}>
+            <p className="font-robot">You can save your decks by sign up :D </p>
+            <a href="/signup">Create Account</a>
+            <p className="font-robot">or</p>
+            <p className="font-robot">Already have an account?</p>
+            <a href="/login">login</a>
+          </div>
+        );
       default:
         return <div />;
     }
@@ -23,8 +31,7 @@ class DisplayCards extends Component {
   }
   renderCards() {
     let deck = this.props.cards;
-    // this deck has only cards name,
-    // to sort them in order to the cost,
+    // this deck has only card names. to sort them in order to the cost,
     // replace the strings to data objects from cardsData.js
     deck = deck.map(
       card => (card = cardsData.filter(item => item.name === card))
@@ -45,10 +52,14 @@ class DisplayCards extends Component {
   }
   render() {
     return (
-      <div className="col s9">
-        <div className="recomending-signup-msg">{this.message()}</div>
-        <h4 className="bold-700">{this.props.user && this.renderDeckName()}</h4>
-        {this.props.user && this.renderCards()}
+      <div>
+        <div className="heading large">{this.message()}</div>
+        <div className="col s9">
+          <p className="bold heading large">
+            {this.props.user && this.renderDeckName()}
+          </p>
+          {this.props.user && this.renderCards()}
+        </div>
       </div>
     );
   }

@@ -36,7 +36,7 @@ const deck = (state = initialState, action) => {
     case REMOVE_CARD:
       return {
         ...state,
-        deck: state.deck.filter(x => x !== action.card),
+        deck: state.deck.filter(card => card !== action.card),
         errorMessage: ''
       };
     default:
