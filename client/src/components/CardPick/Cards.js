@@ -4,7 +4,7 @@ import cardsData from '../../cardsData';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/action';
 
-class Cards extends Component {
+export class Cards extends Component {
   state = {
     expansion: null,
     cost: null,

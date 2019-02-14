@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 
-class Selectors extends Component {
+export class Selectors extends Component {
   render() {
     const expansion = [
       { value: null, label: 'All' },
