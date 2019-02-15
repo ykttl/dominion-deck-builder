@@ -5,7 +5,7 @@ import * as requests from '../../actions/request';
 import * as actions from '../../actions/action';
 import cardsData from '../../cardsData';
 
-class Sidebar extends Component {
+export class Sidebar extends Component {
   saveDeck = () => {
     if (!this.props.user) {
       alert('You can save your deck by sing-up :)');
@@ -30,16 +30,17 @@ class Sidebar extends Component {
   };
   renderCardName = () => {
     let deck = this.props.deck;
+
     // this deck has only card names. to sort them in order to the cost,
     // replace the strings to data objects from cardsData.js
     deck = deck.map(
       card => (card = cardsData.filter(data => data.name === card))
     );
-    function compare(a, b) {
+    const compare = (a, b) => {
       if (a[0].cost < b[0].cost) return -1;
       if (a[0].cost > b[0].cost) return 1;
       return 0;
-    }
+    };
     deck.sort(compare);
 
     // ----- render sorted cards -----

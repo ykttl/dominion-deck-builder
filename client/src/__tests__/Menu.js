@@ -5,7 +5,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('Menu bar items', () => {
+describe('Menu items', () => {
   it('always renders cardpick and decklist', () => {
     const wrapper = shallow(<Menu />);
     expect(wrapper.find('.cardpick').length).toBe(1);
