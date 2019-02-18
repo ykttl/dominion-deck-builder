@@ -8,6 +8,7 @@ export const ERROR_MESSAGE = 'ERROR_MESSAGE';
 // ===== requests to server ======
 export const fetchUser = message => async dispatch => {
   const res = await axios.get('/api/current_user');
+
   dispatch({ type: FETCH_USER, userData: res.data });
   dispatch({ type: ERROR_MESSAGE, message: message });
 };

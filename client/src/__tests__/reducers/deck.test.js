@@ -1,5 +1,5 @@
-import reducer from '../reducers/deck';
-import * as action from '../actions/action';
+import reducer from '../../reducers/deck';
+import * as action from '../../actions/action';
 
 const initialState = {
   deck: [],
