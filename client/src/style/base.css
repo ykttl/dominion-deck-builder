@@ -32,3 +32,11 @@
 .font-robot {
   font-family: 'Roboto';
 }
+
+/********* Fixing css in React Selector (library) *********/
+.css-1hwfws3 {
+  position: static !important;
+}
+.css-1hwfws3 {
+  height: 30px !important;
+}

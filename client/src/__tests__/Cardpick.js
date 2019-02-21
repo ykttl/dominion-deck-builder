@@ -46,10 +46,3 @@ describe('Cards', () => {
     expect(dispatchFunc).toHaveBeenCalled();
   });
 });
-
-//it('', () => {
-// const mockDeck = ['test1', 'test2', 'test3'];
-// const wrapper = shallow(<Sidebar deck={mockDeck} />);
-// wrapper.instance().renderCardName(mockDeck);
-// expect(wrapper.find('.list-item').length).toBe(3);
-//});

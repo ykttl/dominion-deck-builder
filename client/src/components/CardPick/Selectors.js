@@ -32,7 +32,7 @@ export class Selectors extends Component {
     const styles = {
       control: styles => ({
         ...styles,
-        width: '150px',
+        width: '170px',
         height: '30px',
         border: 'solid gray',
         'font-size': '1.2rem'
